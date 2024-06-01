@@ -20,7 +20,7 @@
                         <div class="contact_info_container fh">
                             <div class="contact-info__block">
                                 <a
-                                    href=""
+                                    href="#"
                                     rel="author"
                                     class="contact-info__item"
                                 >
@@ -173,18 +173,18 @@
                                 </svg>
                             </div>
                             <p class="intro_text">
-                                Hi there! My name is Anastasiia, and I have been
-                                learning programming for 4 years now. I'm here
-                                because I have been looking for great
-                                opportunities to gain real-world experience.
-                                Also, I have heard a lot of good things about
-                                this Academy. My English is at about level C1,
-                                as I really wanted to learn it for myself. For
-                                programming, my primary language is JavaScript.
-                                I have also been working with Angular for more
-                                than a year. My strength lies in my love for
-                                problem-solving. According to the MBTI, I am an
-                                INTJ :)
+                                <span class="greeting" id="greeting"></span> My
+                                name is Anastasiia, and I have been learning
+                                programming for 4 years now. I'm here because I
+                                have been looking for great opportunities to
+                                gain real-world experience. Also, I have heard a
+                                lot of good things about this Academy. My
+                                English is at about level C1, as I really wanted
+                                to learn it for myself. For programming, my
+                                primary language is JavaScript. I have also been
+                                working with Angular for more than a year. My
+                                strength lies in my love for problem-solving.
+                                According to the MBTI, I am an INTJ :)
                             </p>
                         </div>
                     </div>
@@ -370,6 +370,44 @@
                     </div>
                 </div>
             </div>
+            <div class="easter-egg" id="egg1">🐣</div>
+            <div class="easter-egg" id="egg2">🥚</div>
+            <div class="easter-egg" id="egg3">🐰</div>
         </main>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const eggs = document.querySelectorAll(".easter-egg");
+                eggs.forEach((egg) => {
+                    egg.style.display = "block";
+                    egg.style.top =
+                        Math.random() * (window.innerHeight - 50) + "px";
+                    egg.style.left =
+                        Math.random() * (window.innerWidth - 50) + "px";
+
+                    egg.addEventListener("click", function () {
+                        egg.classList.add("revealed");
+                        alert("You found an easter egg!");
+                    });
+                });
+            });
+
+            document.addEventListener("DOMContentLoaded", function () {
+                const greetingElement = document.getElementById("greeting");
+                const currentHour = new Date().getHours();
+                let greetingMessage = "";
+
+                if (currentHour >= 5 && currentHour < 12) {
+                    greetingMessage = "Good Morning!";
+                } else if (currentHour >= 12 && currentHour < 18) {
+                    greetingMessage = "Good Afternoon!";
+                } else if (currentHour >= 18 && currentHour < 21) {
+                    greetingMessage = "Good Evening!";
+                } else {
+                    greetingMessage = "Good Night!";
+                }
+
+                greetingElement.textContent = greetingMessage;
+            });
+        </script>
     </body>
 </html>
